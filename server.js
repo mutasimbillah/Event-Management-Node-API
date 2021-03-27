@@ -4,6 +4,10 @@ const morgan = require('morgan');
 
 // eslint-disable-next-line no-unused-vars
 const colors = require('colors');
+
+// Middleware import
+const errorHandler = require('./middleware/error_middleware');
+
 // db
 const connectDB = require('./config/db_connection');
 // router files
@@ -26,6 +30,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/v1/entry', entryRouter);
+
+// call error middleware
+app.use(errorHandler);
 
 const server = app.listen(
     PORT,
