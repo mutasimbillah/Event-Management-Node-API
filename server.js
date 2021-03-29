@@ -12,6 +12,7 @@ const errorHandler = require('./middleware/error_middleware');
 const connectDB = require('./config/db_connection');
 // router files
 const entryRouter = require('./routes/entry_router');
+const userRouter = require('./routes/user_router');
 
 // load env file
 dotenv.config({ path: './config/config.env' });
@@ -24,12 +25,16 @@ const PORT = process.env.PORT || 5000;
 // start
 const app = express();
 
+// add json body perser (req.body)
+app.use(express.json());
+
 // Mount router
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
 app.use('/api/v1/entry', entryRouter);
+app.use('/api/v1/user', userRouter);
 
 // call error middleware
 app.use(errorHandler);
