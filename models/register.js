@@ -1,7 +1,7 @@
 //
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const RegisterSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     type: {
         type: String,
         required: [true, 'Please add a user Type'],
-        enum: ['Teacher', 'Student', 'VIP', 'Guest'],
+        enum: ['teacher', 'student', 'guest'],
     },
 });
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('register', RegisterSchema);
