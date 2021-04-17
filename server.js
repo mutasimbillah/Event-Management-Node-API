@@ -13,6 +13,7 @@ const connectDB = require('./config/db_connection');
 // router files
 const registerUserRouter = require('./routes/register');
 const userRouter = require('./routes/user');
+const adminRouter = require('./routes/admin');
 // load env file
 dotenv.config({ path: './config/config.env' });
 
@@ -34,6 +35,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/api/v1/register', registerUserRouter);
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/admin', adminRouter);
 
 // call error middleware
 app.use(errorHandler);
