@@ -10,14 +10,12 @@ const {
     launch,
     dinner,
 } = require('../controllers/user');
-const { getTotalUser } = require('../controllers/total');
 // router
 const router = express.Router();
-
+// Url/api/v1/user
 router.route('/').post(protect, confirmRegistration);
-router.route('/total').get(protect, getTotalUser);
 router.route('/bus/:id').post(protect, useBus);
-router.route('/returnBus/:id').post(protect, returnBus);
+router.route('/returnbus/:id').post(protect, returnBus);
 router.route('/entry/:id').post(protect, entry);
 router.route('/launch/:id').post(protect, launch);
 router.route('/dinner/:id').post(protect, dinner);

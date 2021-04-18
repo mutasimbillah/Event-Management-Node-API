@@ -5,7 +5,7 @@ const RegisterUser = require('../models/register');
 // @route     Post /api/v1/register
 // @access    Public
 exports.registerUser = asyncHandler(async (req, res, next) => {
-    // Check for published bootcamp
+    // Check for duplicate user
     const alreadyRegister = await RegisterUser.findOne({ mobile: req.body.mobile });
 
     if (alreadyRegister === null) {

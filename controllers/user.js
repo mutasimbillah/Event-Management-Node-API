@@ -8,7 +8,7 @@ const { addTotalUser } = require('./total');
 // @route     Post /api/v1/user
 // @access    Private
 exports.confirmRegistration = asyncHandler(async (req, res, next) => {
-    // Check for already registered
+    // Check for already Confirmed
     const alreadyRegister = await User.findOne({ userId: req.body.userId });
     if (alreadyRegister === null) {
         const user = await User.create(req.body);
@@ -22,7 +22,7 @@ exports.confirmRegistration = asyncHandler(async (req, res, next) => {
     }
 });
 
-// @desc      Confirm Registration By Admin
+// @desc      Bus Ticket Use
 // @route     Post /api/v1/user/bus/:id
 // @access    Private
 exports.useBus = asyncHandler(async (req, res, next) => {
@@ -44,6 +44,9 @@ exports.useBus = asyncHandler(async (req, res, next) => {
     }
 });
 
+// @desc      Return Bus Ticket Use
+// @route     Post /api/v1/user/returnbus/:id
+// @access    Private
 exports.returnBus = asyncHandler(async (req, res, next) => {
     // Check for already used ticket
     const user = await User.findOne({ userId: req.params.id });
@@ -63,6 +66,9 @@ exports.returnBus = asyncHandler(async (req, res, next) => {
     }
 });
 
+// @desc      Entry Ticket Use
+// @route     Post /api/v1/user/entry/:id
+// @access    Private
 exports.entry = asyncHandler(async (req, res, next) => {
     // Check for already used ticket
     const user = await User.findOne({ userId: req.params.id });
@@ -82,6 +88,9 @@ exports.entry = asyncHandler(async (req, res, next) => {
     }
 });
 
+// @desc      Launch Ticket Use
+// @route     Post /api/v1/user/launch/:id
+// @access    Private
 exports.launch = asyncHandler(async (req, res, next) => {
     // Check for already used ticket
     const user = await User.findOne({ userId: req.params.id });
@@ -101,6 +110,9 @@ exports.launch = asyncHandler(async (req, res, next) => {
     }
 });
 
+// @desc      Dinner Ticket Use
+// @route     Post /api/v1/user/dinner/:id
+// @access    Private
 exports.dinner = asyncHandler(async (req, res, next) => {
     // Check for already used ticket
     const user = await User.findOne({ userId: req.params.id });
